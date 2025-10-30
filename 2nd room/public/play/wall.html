@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>도전자 사망 기록</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/play/css/play.css" />
+</head>
+<body class="wall">
+  <main class="wall-wrap">
+    <h1>마지막 유언 리스트</h1>
+    <p>가장 최근 순으로 표시됩니다.</p>
+    <ul id="death-list"></ul>
+  </main>
+  <script>
+    async function loadDeaths() {
+      const res = await fetch('/api/deaths', { cache: 'no-store' });
+      const data = await res.json();
+      const list = document.getElementById('death-list');
+      list.innerHTML = '';
+      const isAdmin = document.cookie.includes('admin=ok');
+
+      (data.items || []).forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'death-item';
+        li.innerHTML = `
+          <div class="death-meta">
+            <strong>${item.room || '-'}</strong>
+            <span>${item.cause || '-'}</span>
+            <span>${item.time || ''}</span>
+          </div>
+          <p class="death-will">${item.will || '비명조차 지르지 못한 채 즉사.'}</p>
+        `;
+        if (isAdmin) {
+          const btn = document.createElement('button');
+          btn.textContent = '삭제';
+          btn.onclick = async () => {
+            await fetch('/api/deaths/' + item.id, { method: 'DELETE' });
+            loadDeaths();
+          };
+          li.appendChild(btn);
+        }
+        list.appendChild(li);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', loadDeaths);
+  </script>
+</body>
+</html>
+

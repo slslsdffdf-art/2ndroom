@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>2nd Room – Play</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/play/css/play.css" />
+</head>
+<body class="play">
+  <!-- 배경 -->
+  <div id="room-bg" class="room-bg"></div>
+
+  <!-- 방 이름 -->
+  <header class="room-header">
+    <h2 id="room-label">---</h2>
+  </header>
+
+  <!-- 직전 플레이어 유언 -->
+  <div id="lastwords" class="lastwords"></div>
+
+  <!-- 선택지 -->
+  <section id="choices" class="choices"></section>
+
+  <!-- 스토리 오버레이 -->
+  <div id="story-overlay" class="story-hidden">
+    <div class="story-panel">
+      <button id="story-close" class="story-close">×</button>
+      <h2 id="story-title"></h2>
+      <p id="story-subtitle"></p>
+      <div id="story-body"></div>
+      <div id="story-actions">
+        <button id="story-skip" style="display:none;">건너뛰기</button>
+        <button id="story-continue">계속하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 유언 모달 -->
+  <div id="will-modal" class="modal hidden">
+    <div class="modal-panel">
+      <h3 id="will-title">마지막으로 남길 말</h3>
+      <p id="will-cause" style="opacity:.7;font-size:.8rem;"></p>
+      <textarea id="will-text" maxlength="180" placeholder="비명조차 지르지 못한 채 즉사."></textarea>
+      <div class="modal-actions">
+        <button id="will-submit">남기고 떠난다</button>
+        <button id="will-skip">유언 없이</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 특수 이벤트 -->
+  <div id="event-modal" class="modal hidden">
+    <div class="modal-panel">
+      <h3 id="event-title">이벤트</h3>
+      <p id="event-body"></p>
+      <div id="event-actions" class="modal-actions"></div>
+    </div>
+  </div>
+
+  <!-- 인벤토리 -->
+  <div id="inventory" class="inventory hidden">
+    <h4>획득한 것</h4>
+    <ul id="inventory-list"></ul>
+  </div>
+
+  <!-- 공유 카드 캔버스 -->
+  <canvas id="share-canvas" width="720" height="1080" class="hidden"></canvas>
+
+  <!-- 스크립트 -->
+  <script src="/public/js/audio.js"></script>
+  <script type="module" src="/public/js/room-engine.js"></script>
+</body>
+</html>
+

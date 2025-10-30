@@ -1,0 +1,89 @@
+{
+  "start": "room_001",
+  "rooms": {
+    "room_001": {
+      "label": "001호실",
+      "bg": "/public/assets/bg/room_001.jpg",
+      "audio": "BGM_01",
+      "choices": [
+        { "id": "forward", "label": "앞으로 간다", "to": "room_002" },
+        { "id": "inspect", "label": "방 안을 살핀다", "to": "death_001_inspect" },
+        { "id": "stay", "label": "멈춰 선다", "to": "death_001_stay" }
+      ]
+    },
+    "room_002": {
+      "label": "002호실",
+      "bg": "/public/assets/bg/room_002.jpg",
+      "audio": "BGM_02",
+      "choices": [
+        { "id": "forward", "label": "앞으로 간다", "to": "room_003" },
+        { "id": "inspect", "label": "방 안을 살핀다", "to": "death_002_inspect" },
+        { "id": "stay", "label": "멈춰 선다", "to": "death_002_stay" }
+      ]
+    },
+    "room_003": {
+      "label": "003호실",
+      "bg": "/public/assets/bg/room_003.jpg",
+      "audio": "BGM_03",
+      "choices": [
+        { "id": "forward", "label": "앞으로 간다", "to": "room_004" },
+        { "id": "inspect", "label": "방 안을 살핀다", "to": "death_003_inspect" },
+        { "id": "stay", "label": "멈춰 선다", "to": "death_003_stay" }
+      ]
+    },
+    "room_004": {
+      "label": "004호실",
+      "bg": "/public/assets/bg/room_004.jpg",
+      "audio": "BGM_04",
+      "choices": [
+        { "id": "forward", "label": "앞으로 간다", "to": "room_005" },
+        { "id": "inspect", "label": "방 안을 살핀다", "to": "death_004_inspect" },
+        { "id": "stay", "label": "멈춰 선다", "to": "death_004_stay" }
+      ]
+    },
+    "room_005": {
+      "label": "005호실",
+      "bg": "/public/assets/bg/room_005.jpg",
+      "audio": "BGM_05",
+      "choices": [
+        { "id": "forward", "label": "앞으로 간다", "to": "room_006" },
+        { "id": "inspect", "label": "방 안을 살핀다", "to": "death_005_inspect" },
+        { "id": "stay", "label": "멈춰 선다", "to": "death_005_stay" }
+      ]
+    }
+  },
+  "deaths": {
+    "death_001_inspect": {
+      "title": "너무 오래된 문",
+      "cause": "문을 붙잡고 있던 녹슨 못이 너를 찔렀다.",
+      "cardImage": "/public/assets/cards/death_001_inspect.png",
+      "cardOverlay": "/public/assets/cards/frame_blood.png",
+      "defaultWill": "여기서 멈췄다."
+    },
+    "death_001_stay": {
+      "title": "빈방이 아니었다",
+      "cause": "멈춰 선 네 등 뒤로 무언가가 천천히 일어섰다.",
+      "cardImage": "/public/assets/cards/death_001_stay.png"
+    },
+    "death_002_inspect": {
+      "title": "세탁기가 낸 소리가 아니었다",
+      "cause": "귀를 대는 순간, 안쪽에서 네 손목을 끌어당겼다.",
+      "cardImage": "/public/assets/cards/death_002_inspect.png"
+    },
+    "death_002_stay": {
+      "title": "경고를 무시했다",
+      "cause": "이 복도에서 멈추는 게 가장 위험했다.",
+      "cardImage": "/public/assets/cards/death_002_stay.png"
+    },
+    "death_003_inspect": {
+      "title": "보일러의 숨",
+      "cause": "밸브 안쪽에 있던 것이 얼굴을 파고들었다.",
+      "cardImage": "/public/assets/cards/death_003_inspect.png"
+    },
+    "death_003_stay": {
+      "title": "열이 빠져나갔다",
+      "cause": "보일러실에서는 서 있으면 안 된다.",
+      "cardImage": "/public/assets/cards/death_003_stay.png"
+    }
+  }
+}

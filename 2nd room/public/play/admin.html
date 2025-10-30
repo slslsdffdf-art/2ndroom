@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="/css/base.css" />
+</head>
+<body>
+  <h1>Admin Login</h1>
+  <input id="pwd" type="password" />
+  <button id="btn">Login</button>
+  <p id="msg"></p>
+  <script type="module">
+    import { adminLogin } from '/js/api.js';
+    const pwd = document.getElementById('pwd');
+    const btn = document.getElementById('btn');
+    const msg = document.getElementById('msg');
+
+    btn.onclick = async () => {
+      const r = await adminLogin(pwd.value);
+      if (r.ok) {
+        msg.textContent = 'OK. 이제 /play/wall.html 가면 삭제버튼 보임.';
+      } else {
+        msg.textContent = 'FAIL';
+      }
+    };
+  </script>
+</body>
+</html>

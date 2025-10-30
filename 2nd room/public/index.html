@@ -1,21 +1,28 @@
 <!doctype html>
-<html lang="ko">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>로비</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/play/css/play.css" />
+  <meta charset="utf-8" />
+  <title>도전자들의 로비</title>
+  <link rel="stylesheet" href="/css/base.css" />
 </head>
-<body class="lobby">
-  <main class="lobby-wrap">
-    <h1>당신의 순번을 기다리십시오.</h1>
-    <p>단 한 명만 입장 가능합니다.</p>
-    <button id="enter-btn">입장 요청</button>
-    <div id="queue-info" class="hidden">
-      <p>당신의 순번: <span id="queue-pos">-</span></p>
-      <p>예상 대기: <span id="queue-eta">-</span></p>
-    </div>
-  </main>
-  <script src="/public/js/queue.js"></script>
+<body>
+  <div class="lobby">
+    <h1>도전자들의 로비</h1>
+
+    <label class="field">
+      ACCESS CODE
+      <input id="access-input" type="password" autocomplete="off" />
+    </label>
+    <button id="access-btn">확인</button>
+    <p id="access-msg" class="msg"></p>
+
+    <hr />
+
+    <p id="queue-status">비밀번호를 입력하여 주십시오.</p>
+    <button id="enter-btn" disabled>대기열 등록</button>
+
+    <p class="small">※ 탈출에 도전하는 것은 한명씩만 가능합니다. ※</p>
+  </div>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

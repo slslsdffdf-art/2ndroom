@@ -1,37 +1,19 @@
-// BGM 미리 매핑 (10곡 순환)
-const bgmMap = {};
-for (let i = 1; i <= 10; i++) {
-  const key = `BGM_${String(i).padStart(2, '0')}`;
-  const audio = new Audio(`/public/assets/bgm/${key}.mp3`);
+let currentAudio = null;
+
+export function playBGM(id, opts = {}) {
+  const src = `/assets/bgm/${id}.mp3`; // 네가 채움
+  const audio = new Audio(src);
   audio.loop = true;
-  audio.volume = 0.28;
-  bgmMap[key] = audio;
-}
-let currentBgm = null;
+  audio.volume = 0;
+  audio.play().catch(()=>{});
+  currentAudio = audio;
 
-export function playBGMForRoom(key) {
-  const audio = bgmMap[key];
-  if (!audio) return;
-  if (currentBgm && currentBgm !== audio) {
-    currentBgm.pause();
-    currentBgm.currentTime = 0;
-  }
-  currentBgm = audio;
-  audio.play().catch(() => {});
+  const fadeIn = opts.fadeIn || 1200;
+  const step = 50;
+  let t = 0;
+  const timer = setInterval(() => {
+    t += step;
+    audio.volume = Math.min(1, t / fadeIn);
+    if (t >= fadeIn) clearInterval(timer);
+  }, step);
 }
-window.playBGMForRoom = playBGMForRoom;
-
-// SFX
-const sfx = {
-  click: new Audio('/public/assets/sfx/ui_click.mp3'),
-  death: new Audio('/public/assets/sfx/death_hit.mp3')
-};
-Object.values(sfx).forEach(a => a && (a.volume = 0.5));
-
-export function playSfx(name) {
-  const a = sfx[name];
-  if (!a) return;
-  a.currentTime = 0;
-  a.play().catch(() => {});
-}
-window.playSfx = playSfx;
